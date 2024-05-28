@@ -1,17 +1,8 @@
 package org.israelgda.dtos
 
-import lombok.AllArgsConstructor
-import lombok.Builder
-import lombok.NoArgsConstructor
-import lombok.extern.jackson.Jacksonized
-
-@Jacksonized
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 class USDBRL (
     code: String,
-    codeIn: String,
+    codein: String,
     name: String,
     high: String,
     low: String,
@@ -23,10 +14,22 @@ class USDBRL (
     create_date: String
 ){
 
-    constructor(): this("", "","","","","","","","","","",)
+    constructor(): this(
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    )
 
     val code = code
-    val codeIn = codeIn
+    val codein = codein
     val name = name
     val high = high
     val low = low
