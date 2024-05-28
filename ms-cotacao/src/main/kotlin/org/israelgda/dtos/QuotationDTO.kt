@@ -7,6 +7,19 @@ class QuotationDTO (
     currencyPrice: BigDecimal
 ){
 
+    constructor(): this("", BigDecimal(0.0))
+
     val date = date
     val currencyPrice = date
+
+
+    data class Builder(
+        var date: String? = null,
+        var currencyPrice: BigDecimal? = null
+    ) {
+        fun date(date: String) = apply { this.date = date }
+        fun currencyPrice(currencyPrice: BigDecimal) = apply { this.currencyPrice = currencyPrice }
+
+        fun build() = QuotationDTO(date?: "", currencyPrice?: BigDecimal(0.0))
+    }
 }
