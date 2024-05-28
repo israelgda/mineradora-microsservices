@@ -5,7 +5,7 @@ import jakarta.ws.rs.GET
 import jakarta.ws.rs.Path
 import jakarta.ws.rs.PathParam
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient
-import org.israelgda.dtos.CurrencyPriceDTO
+import org.israelgda.dtos.CurrencyPriceDTOJava
 
 @Path("/last")
 @RegisterRestClient(baseUri="https://economia.awesomeapi.com.br")
@@ -14,5 +14,5 @@ interface CurrencyPriceClient {
 
     @GET
     @Path("/{pair}")
-    fun getPriceByFair(@PathParam("pair") pair: String): CurrencyPriceDTO
+    fun getPriceByFair(@PathParam("pair") pair: String): CurrencyPriceDTOJava
 }

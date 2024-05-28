@@ -8,7 +8,7 @@ import java.time.Instant
 @Table(name = "quotation")
 class Quotation(
     date: Instant,
-    currencyPrice: BigDecimal,
+    currentPrice: BigDecimal,
     pctChange: String,
     pair: String
 ) {
@@ -21,8 +21,8 @@ class Quotation(
     @Column(name = "quotation_date")
     var date = date
 
-    @Column(name = "currency_price")
-    var currencyPrice = currencyPrice
+    @Column(name = "current_price")
+    var currentPrice = currentPrice
 
     @Column(name = "pct_change")
     var pctChange = pctChange

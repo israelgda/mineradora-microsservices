@@ -4,7 +4,7 @@ import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
 import org.eclipse.microprofile.rest.client.inject.RestClient
 import org.israelgda.client.CurrencyPriceClient
-import org.israelgda.dtos.CurrencyPriceDTO
+import org.israelgda.dtos.CurrencyPriceDTOJava
 import org.israelgda.dtos.QuotationDTO
 import org.israelgda.entities.Quotation
 import org.israelgda.message.KafkaEvents
@@ -37,7 +37,7 @@ class QuotationService {
                     .build())
     }
 
-    private fun updateCurrentInfoPrice(currency: CurrencyPriceDTO): Boolean {
+    private fun updateCurrentInfoPrice(currency: CurrencyPriceDTOJava): Boolean {
         val currentPrice = currency.USDBRL.bid.toBigDecimal()
 
         val quotationList = quotationRepository.findAll().list()
@@ -48,7 +48,7 @@ class QuotationService {
         } else {
             val lastDollarPrice = quotationList.last()
 
-            if(currentPrice.toFloat() != lastDollarPrice.currencyPrice.toFloat()) {
+            if(currentPrice.toFloat() != lastDollarPrice.currentPrice.toFloat()) {
                 saveQuotation(currency)
                 return true
             }
@@ -57,7 +57,7 @@ class QuotationService {
         return false
     }
 
-    private fun saveQuotation(currency: CurrencyPriceDTO) {
+    private fun saveQuotation(currency: CurrencyPriceDTOJava) {
 
         quotationRepository.persist(
             Quotation(
