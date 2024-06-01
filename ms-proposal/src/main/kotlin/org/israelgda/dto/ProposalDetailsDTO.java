@@ -1,14 +1,10 @@
 package org.israelgda.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class ProposalDetailsDTO {
 
     public Long proposalId;
@@ -17,4 +13,13 @@ public class ProposalDetailsDTO {
     public Integer tonnes;
     public String country;
     public Integer proposalValidityDays;
+
+    public ProposalDetailsDTO(Long proposalId, String customer, BigDecimal priceTonne, Integer tonnes, String country, Integer proposalValidityDays) {
+        this.proposalId = proposalId;
+        this.customer = customer;
+        this.priceTonne = priceTonne;
+        this.tonnes = tonnes;
+        this.country = country;
+        this.proposalValidityDays = proposalValidityDays;
+    }
 }

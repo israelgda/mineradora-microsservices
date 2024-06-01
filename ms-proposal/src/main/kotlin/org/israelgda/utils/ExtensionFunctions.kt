@@ -4,14 +4,14 @@ import org.israelgda.dto.ProposalDTO
 import org.israelgda.dto.ProposalDetailsDTO
 import org.israelgda.entities.Proposal
 
-fun Proposal.toDetailsDTO(): ProposalDetailsDTO = ProposalDetailsDTO.builder()
-    .proposalId(this.id)
-    .customer(this.customer)
-    .priceTonne(this.priceTonne)
-    .tonnes(0)
-    .country(this.country)
-    .proposalValidityDays(this.propostalValidityDays)
-    .build()
+fun Proposal.toDetailsDTO() = ProposalDetailsDTO(
+    this.id,
+    this.customer,
+    this.priceTonne,
+    0,
+    this.country,
+    this.propostalValidityDays
+)
 
 fun ProposalDetailsDTO.toEntity(): Proposal = Proposal(
     this.customer,
@@ -20,9 +20,9 @@ fun ProposalDetailsDTO.toEntity(): Proposal = Proposal(
     this.proposalValidityDays
 )
 
-fun Proposal.toSimplifiedDTO(): ProposalDTO = ProposalDTO.builder()
-    .proposalId(this.id)
-    .customer(this.customer)
-    .priceTonne(this.priceTonne)
-    .build()
+fun Proposal.toSimplifiedDTO(): ProposalDTO = ProposalDTO(
+    this.id,
+    this.customer,
+    this.priceTonne
+)
 
