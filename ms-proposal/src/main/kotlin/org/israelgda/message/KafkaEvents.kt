@@ -13,7 +13,7 @@ class KafkaEvents {
     private val log: Logger = LoggerFactory.getLogger(KafkaEvents::class.java)
 
 
-    @Channel("proposal")
+    @Channel("proposal-channel")
     lateinit var proposalRequestEmitter: Emitter<ProposalDTO>
 
     fun sendNewKafkaEvent(proposalDTO: ProposalDTO) {
