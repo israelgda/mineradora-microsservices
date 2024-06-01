@@ -8,7 +8,7 @@ fun Proposal.toDetailsDTO() = ProposalDetailsDTO(
     this.id,
     this.customer,
     this.priceTonne,
-    0,
+    this.tonnes,
     this.country,
     this.propostalValidityDays
 )
@@ -16,6 +16,7 @@ fun Proposal.toDetailsDTO() = ProposalDetailsDTO(
 fun ProposalDetailsDTO.toEntity(): Proposal = Proposal(
     this.customer,
     this.priceTonne,
+    this.tonnes,
     this.country,
     this.proposalValidityDays
 )

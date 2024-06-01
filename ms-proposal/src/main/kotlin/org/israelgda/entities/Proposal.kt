@@ -9,10 +9,11 @@ import java.time.Instant
 class Proposal (
     customer: String,
     priceTonne: BigDecimal,
+    tonnes: Int,
     country: String,
     propostalValidityDays: Int
 ){
-    constructor(): this("", BigDecimal(0), "", 0)
+    constructor(): this("", BigDecimal(0), 0, "", 0)
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +23,8 @@ class Proposal (
 
     @Column(name = "price_tonne")
     var priceTonne = priceTonne
+
+    var tonnes = tonnes
     var country = country
 
     @Column(name = "propostal_validity_days")
