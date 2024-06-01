@@ -12,6 +12,8 @@ class Proposal (
     country: String,
     propostalValidityDays: Int
 ){
+    constructor(): this("", BigDecimal(0), "", 0)
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id = 0L
