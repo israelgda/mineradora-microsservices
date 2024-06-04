@@ -8,4 +8,11 @@ public class OpportunityDTO {
     public String customer;
     public BigDecimal priceTonne;
     public BigDecimal lastDollarQuotation;
+
+    public OpportunityDTO(Long proposalId, String customer, BigDecimal priceTonne, BigDecimal lastDollarQuotation) {
+        this.proposalId = proposalId;
+        this.customer = customer;
+        this.priceTonne = priceTonne;
+        this.lastDollarQuotation = lastDollarQuotation;
+    }
 }
