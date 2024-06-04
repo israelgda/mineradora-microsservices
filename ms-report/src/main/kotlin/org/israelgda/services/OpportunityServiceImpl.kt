@@ -47,9 +47,7 @@ class OpportunityServiceImpl: OpportunityService {
     }
 
     override fun generateCSVOpportunityReport(): ByteArrayInputStream {
-        var opportinitiesList: List<OpportunityDTO> = emptyList()
-
-        opportinitiesList = opportunityRepository.findAll()
+        val opportinitiesList = opportunityRepository.findAll()
             .list()
             .map { it.toDTO() }
 
