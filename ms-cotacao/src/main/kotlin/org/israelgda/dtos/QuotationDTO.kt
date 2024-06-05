@@ -10,7 +10,7 @@ class QuotationDTO (
     constructor(): this("", BigDecimal(0.0))
 
     val date = date
-    val currencyPrice = date
+    val currencyPrice = currencyPrice
 
 
     data class Builder(
