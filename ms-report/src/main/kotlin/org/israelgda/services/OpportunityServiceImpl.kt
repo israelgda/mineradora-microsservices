@@ -12,6 +12,7 @@ import org.israelgda.repositories.QuotationRepository
 import org.israelgda.services.exceptions.ResourceNotFoundException
 import org.israelgda.utils.CSVHelper
 import org.israelgda.utils.toDTO
+import org.israelgda.utils.toEntity
 import java.io.ByteArrayInputStream
 import java.time.Instant
 
@@ -33,13 +34,15 @@ class OpportunityServiceImpl: OpportunityService {
         opportunity.proposalId = proposalDTO.proposalId
         opportunity.customer = proposalDTO.customer
         opportunity.priceTonne = proposalDTO.priceTonne
-        opportunity.lastDollarQuotation = quotations.first().currencyPrice
+        opportunity.lastDollarQuotation = quotations.first().currentPrice
 
         opportunityRepository.persist(opportunity)
     }
 
+    @Transactional
     override fun saveQuotation(quotationDTO: QuotationDTO) {
-        TODO("Not yet implemented")
+        val quotation = quotationDTO.toEntity()
+        quotationRepository.persist(quotation)
     }
 
     override fun generateOpportunityData(): List<OpportunityDTO> {

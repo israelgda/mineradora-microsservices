@@ -7,12 +7,11 @@ import java.time.Instant
 @Entity
 @Table(name = "quotation")
 class Quotation (
-    id: Long,
     date: Instant,
-    currencyPrice: BigDecimal
+    currentPrice: BigDecimal
 ){
 
-    constructor(): this(0L, Instant.now(), BigDecimal(0))
+    constructor(): this(Instant.now(), BigDecimal(0))
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +20,6 @@ class Quotation (
     @Column(name = "quotation_date")
     var date = date
 
-    @Column(name = "currency_price")
-    var currencyPrice = currencyPrice
+    @Column(name = "current_price")
+    var currentPrice = currentPrice
 }

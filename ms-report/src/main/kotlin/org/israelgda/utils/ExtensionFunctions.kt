@@ -1,7 +1,9 @@
 package org.israelgda.utils
 
 import org.israelgda.dto.OpportunityDTO
+import org.israelgda.dto.QuotationDTO
 import org.israelgda.entities.Opportunity
+import org.israelgda.entities.Quotation
 
 fun Opportunity.toDTO() = OpportunityDTO(
     this.proposalId,
@@ -10,3 +12,7 @@ fun Opportunity.toDTO() = OpportunityDTO(
     this.lastDollarQuotation
 )
 
+fun QuotationDTO.toEntity() = Quotation(
+    this.date,
+    this.currencyPrice
+)
