@@ -9,11 +9,8 @@ import org.israelgda.dto.QuotationDTO
 import org.israelgda.entities.Opportunity
 import org.israelgda.repositories.OpportunityRepository
 import org.israelgda.repositories.QuotationRepository
-import org.israelgda.services.exceptions.ResourceNotFoundException
-import org.israelgda.utils.CSVHelper
 import org.israelgda.utils.toDTO
 import org.israelgda.utils.toEntity
-import java.io.ByteArrayInputStream
 import java.time.Instant
 
 @ApplicationScoped
@@ -46,17 +43,10 @@ class OpportunityServiceImpl: OpportunityService {
     }
 
     override fun generateOpportunityData(): List<OpportunityDTO> {
-        TODO("Not yet implemented")
-    }
-
-    override fun generateCSVOpportunityReport(): ByteArrayInputStream {
-        val opportinitiesList = opportunityRepository.findAll()
+        return opportunityRepository
+            .findAll()
             .list()
             .map { it.toDTO() }
-
-        if (opportinitiesList.isEmpty())
-            throw ResourceNotFoundException("Nenhuma proposta foi encontrada no banco!")
-
-        return CSVHelper.opportunityToCSV(opportinitiesList)
     }
+
 }

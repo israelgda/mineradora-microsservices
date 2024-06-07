@@ -4,7 +4,6 @@ import jakarta.enterprise.context.ApplicationScoped
 import org.israelgda.dto.OpportunityDTO
 import org.israelgda.dto.ProposalDTO
 import org.israelgda.dto.QuotationDTO
-import java.io.ByteArrayInputStream
 
 @ApplicationScoped
 interface OpportunityService {
@@ -12,5 +11,4 @@ interface OpportunityService {
     fun buildOpportunity(proposalDTO: ProposalDTO)
     fun saveQuotation(quotationDTO: QuotationDTO)
     fun generateOpportunityData(): List<OpportunityDTO>
-    fun generateCSVOpportunityReport(): ByteArrayInputStream
 }
