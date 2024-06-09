@@ -45,9 +45,10 @@ class ReportController {
     fun generateOpportunitiesData(): Response {
         return try {
             Response.ok(
-                reportService.getOpportunitiesData(),
                 MediaType.APPLICATION_JSON
-            ).build()
+            )
+            .entity(reportService.getOpportunitiesData())
+            .build()
         } catch (errorException: ServerErrorException) {
             Response.serverError().build()
         }
