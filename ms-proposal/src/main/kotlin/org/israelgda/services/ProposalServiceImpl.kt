@@ -11,6 +11,8 @@ import org.israelgda.utils.toDetailsDTO
 import org.israelgda.utils.toEntity
 import org.israelgda.utils.toSimplifiedDTO
 
+private const val PROPOSAL_NOT_FOUND_MSG_ERROR = "Proposal not found for id:"
+
 @ApplicationScoped
 class ProposalServiceImpl: ProposalService {
 
@@ -23,7 +25,7 @@ class ProposalServiceImpl: ProposalService {
     override fun findFullProposalDetails(id: Long): ProposalDetailsDTO {
         return proposalRepository.findById(id)
             ?.toDetailsDTO()
-            ?: throw ResourceNotFoundException("Proposal not found for id: $id")
+            ?: throw ResourceNotFoundException("$PROPOSAL_NOT_FOUND_MSG_ERROR $id")
     }
 
     @Transactional
@@ -44,7 +46,7 @@ class ProposalServiceImpl: ProposalService {
         proposalRepository.findById(id)
             ?.let {
                 proposalRepository.deleteById(id)
-            }?: throw ResourceNotFoundException("Proposal not found for id: $id")
+            }?: throw ResourceNotFoundException("$PROPOSAL_NOT_FOUND_MSG_ERROR $id")
     }
 
 }
